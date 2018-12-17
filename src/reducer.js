@@ -1,8 +1,7 @@
-import uuidv4 from "uuid/v4";
 export default function reducer(state, { type, payload }) {
   switch (type) {
     case "GET_ACTIONS":
-      return {...state, actions:[...state.actions, ...payload]}
+      return { ...state, actions: [...state.actions, ...payload] };
     case "ADD_ACTION":
       return { ...state, actions: [...state.actions, payload] };
     case "UPDATE_ACTION":
@@ -23,7 +22,7 @@ export default function reducer(state, { type, payload }) {
       const newAcionsToKeep = state.actions.filter(action => {
         return action.id !== payload.id;
       });
-      return {...state, actions: newAcionsToKeep };
+      return { ...state, actions: newAcionsToKeep };
     case "COMPLETE_ACTION":
       const newActions = state.actions.map(action => {
         if (action.id === payload.id) {

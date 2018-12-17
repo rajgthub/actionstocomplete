@@ -4,14 +4,13 @@ import UpdateAction from "./UpdateAction";
 import ActionsItemsContext from "../context";
 import axios from "axios";
 import UploadImage from "./UploadImage";
-const endPoint = "https://actions-api-vxgbeepczf.now.sh/actions/";
+const endPoint = process.env.REACT_APP_API_URL;
 export default function ActionsList() {
   const [displayPlus, setDisplayPlus] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const { state, dispatch } = useContext(ActionsItemsContext);
   const [uploadImageWithId, setUploadImageId] = useState(null);
-  console.log(state);
-  
+
   return (
     <div className="container mx-auto max-w-md text-center font-mono">
       <h1 className="text-bold">
@@ -69,9 +68,7 @@ export default function ActionsList() {
               </button>
               <button
                 onClick={async () => {
-                  const response = await axios.delete(endPoint + action.id);
-                  console.log("deleted", response.data);
-
+                  await axios.delete(endPoint + action.id);
                   dispatch({
                     type: "DELETE_ACTION",
                     payload: { id: action.id }
@@ -96,13 +93,7 @@ export default function ActionsList() {
               <button
                 onClick={async () => {
                   setUploadImageId(action.id);
-                  // const res = await axios.patch(endPoint+action.id,{
-                  //   completed: true
-                  // })
-                  // dispatch({
-                  //   type: "COMPLETE_ACTION",
-                  //   payload: res.data
-                  // });
+                  setDisplayPlus(false);
                 }}
               >
                 {!action.completed && (

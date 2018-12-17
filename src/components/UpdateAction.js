@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from 'axios'
 import ActionsItemsContext from "../context";
-const endPoint = "https://actions-api-vxgbeepczf.now.sh/actions/";
+const endPoint = process.env.REACT_APP_API_URL;
 export default function UpdateAction() {
   const [updateAction, setUpdateAction] = useState("");
   const { state, dispatch } = useContext(ActionsItemsContext);
   //Provider and consumer
-  console.log(state);
   useEffect(
     () => {
       if (state.currentAction.descr) {

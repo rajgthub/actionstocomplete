@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import ActionsItemsContext from "../context";
-const endPoint = "https://actions-api-vxgbeepczf.now.sh/actions/";
+const endPoint = process.env.REACT_APP_API_URL;
 export default function UploadImage(props) {
   const { dispatch } = useContext(ActionsItemsContext);
   const handleImageUpload = async e => {
