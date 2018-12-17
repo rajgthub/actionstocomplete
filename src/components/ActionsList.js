@@ -63,7 +63,7 @@ export default function ActionsList() {
                 <img
                   src="https://icon.now.sh/edit/8b0000"
                   alt="no edit icon"
-                  className="h-6"
+                  className="h-6 add"
                 />
               </button>
               <button

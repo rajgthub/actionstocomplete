@@ -22,7 +22,7 @@ export default function AddAction() {
     <>
       <form className="flex justify-center p-5" onSubmit={handleFormSubmit}>
         <input
-          className="border-black border-solid border-2"
+          className="addAction border-black border-solid border-2"
           type="text"
           onChange={e => setAction(e.target.value)}
           value={action}
